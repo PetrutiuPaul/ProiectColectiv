@@ -1,5 +1,3 @@
-using System;
-
 namespace ProiectColectiv.Models
 {
     public class ErrorViewModel

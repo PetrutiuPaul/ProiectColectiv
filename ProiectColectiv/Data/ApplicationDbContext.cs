@@ -22,5 +22,13 @@ namespace ProiectColectiv.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public DbSet<Ability> Abilities { get; set; }
+        public DbSet<Contract> Contracts { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<JobAbility> JobAbilities { get; set; }
+        public DbSet<Recommendation> Recommendations { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<UserAbility> UserAbilities { get; set; }
     }
 }
