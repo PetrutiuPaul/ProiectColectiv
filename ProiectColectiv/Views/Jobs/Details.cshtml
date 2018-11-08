@@ -1,0 +1,18 @@
+﻿@model ProiectColectiv.ViewModels.DetailsJobViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@Html.DisplayFor(vm => vm.Job.Title)</h2>
+
+<div>
+    <h4>@Html.DisplayFor(vm => vm.Job.Description)</h4>
+    <hr />
+    <dl class="dl-horizontal"></dl>
+    <h4>@Html.DisplayFor(vm => vm.Job.Title)</h4>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index" asp-route-page="1">Back to List</a>
+</div>

@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ProiectColectiv.Data;
 using ProiectColectiv.Models;
 using ProiectColectiv.Services;
+using ProiectColectiv.Repository;
 
 namespace ProiectColectiv
 {
@@ -24,7 +25,9 @@ namespace ProiectColectiv
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IJobsRepository), typeof(JobsRepository));
+            services.AddScoped(typeof(IJobsService), typeof(JobsService));
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
@@ -33,6 +36,13 @@ namespace ProiectColectiv
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+
+            var dbContextBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            dbContextBuilder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            using (var authService = new ApplicationDbContext(dbContextBuilder.Options))
+            {
+                authService.Database.Migrate();
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

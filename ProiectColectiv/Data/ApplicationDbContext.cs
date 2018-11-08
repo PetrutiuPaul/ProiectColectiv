@@ -18,9 +18,31 @@ namespace ProiectColectiv.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
+            builder.Entity<Job>().HasData(new Job()
+            {
+                Id = 1,
+                Title = "Astronaut",
+                Description = "Se doreste un astronaut part-time.Program flexibil si cina inclusa(cereale dezhidratate)",
+                AvailableUntil = new DateTime(2020, 12, 2),
+                PostedOn = DateTime.Now
+            },
+            new Job()
+            {
+                Id = 2,
+                Title = "Pitic",
+                Description = "Se doreste un pitic pentru eschibitii pe Piezisa. Program flexibil si bere inclusa(de la Infinity)",
+                AvailableUntil = new DateTime(2020, 12, 2),
+                PostedOn = DateTime.Now
+            },
+            new Job()
+            {
+                Id = 3,
+                Title = "Crescatpr de unicorni",
+                Description = "Program flexibil si masa inclusa(skittles)",
+                AvailableUntil = new DateTime(2020, 12, 2),
+                PostedOn = DateTime.Now
+            }
+            );
         }
 
         public DbSet<Ability> Abilities { get; set; }
