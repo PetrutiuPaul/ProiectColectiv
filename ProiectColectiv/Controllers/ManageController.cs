@@ -59,7 +59,10 @@ namespace ProiectColectiv.Controllers
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 IsEmailConfirmed = user.EmailConfirmed,
-                StatusMessage = StatusMessage
+                StatusMessage = StatusMessage,
+                IsProvider= user.IsProvider,
+                IsClient = user.IsClient,
+                Abilities = user.Abilities
             };
 
             return View(model);

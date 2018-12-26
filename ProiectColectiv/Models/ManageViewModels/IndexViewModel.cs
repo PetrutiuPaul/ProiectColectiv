@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProiectColectiv.Models.ManageViewModels
 {
@@ -17,5 +18,15 @@ namespace ProiectColectiv.Models.ManageViewModels
         public string PhoneNumber { get; set; }
 
         public string StatusMessage { get; set; }
+
+        [Display(Name = "Provider:")]
+        public bool IsProvider { get; set; }
+
+        [Display(Name = "Client:")]
+        public bool IsClient { get; set; }
+
+        [Display(Name = "Abilities")]
+        public List<Ability> Abilities { get; set; }
+
     }
 }
